@@ -10,11 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 /**
- * <p>Filename: com.qianmi.gcs.wx.purchase.infrastructure.support.utils.redis.RedisLock.java</p>
- * <p>Date: 2018-11-26 15:59.</p>
- *
- * @author <a href="mailto:baixiaolin@qianmi.com">OF2510-白晓林</a>
- * @version 0.1.0
+ * @author Administrator
  */
 @Slf4j
 @SuppressWarnings({"WeakerAccess", "unused"})

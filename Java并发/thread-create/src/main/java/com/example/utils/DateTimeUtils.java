@@ -17,11 +17,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * <p>Filename: com.qianmi.gcs.wx.purchase.infrastructure.support.utils.DateTimeUtils.java</p>
- * <p>Date: 2018-11-26 16:17.</p>
- *
- * @author <a href="mailto:baixiaolin@qianmi.com">OF2510-白晓林</a>
- * @version 0.1.0
+ * @author Administrator
  */
 @UtilityClass
 @SuppressWarnings({"unused", "WeakerAccess"})

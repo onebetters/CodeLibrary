@@ -7,10 +7,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <p>Date: 2020-05-29 14:05.</p>
- *
- * @author <a href="mailto:baixiaolin@qianmi.com">OF2510-白晓林</a>
- * @version 0.1.0
+ * @author Administrator
  */
 @Getter
 public enum StatTaskIds {
@@ -35,6 +32,12 @@ public enum StatTaskIds {
     DISTINCT_SELLER_HAVE_TRADE_PER_DAY_4_QM("S_TRA_INC", true, TimeUnit.DAYS, "交易商家数"),
     DISTINCT_SELLER_HAVE_TRADE_PER_HOUR_4_APP("S_TRA_INC", false, TimeUnit.HOURS, "交易商家数"),
     DISTINCT_SELLER_HAVE_TRADE_PER_DAY_4_APP("S_TRA_INC", false, TimeUnit.DAYS, "交易商家数"),
+
+    TRADE_ITEM_COUNT_BY_MARKET_ID_PER_DAY("P_TIC", true, TimeUnit.DAYS, true,"市场商品销量"),
+    TRADE_ITEM_COUNT_BY_MARKET_ID_PER_HOUR("P_TIC", true, TimeUnit.HOURS, true, "市场商品销量"),
+
+    TRADE_ITEM_AMOUNT_BY_MARKET_ID_PER_DAY("P_TIA", true, TimeUnit.DAYS, true,"市场商品交易金额"),
+    TRADE_ITEM_CATS_AMOUNT_BY_MARKET_ID_PER_DAY("P_TICA", true, TimeUnit.DAYS, true,"市场商品类目交易金额"),
     ;
 
 

@@ -8,10 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>Date: 2020-06-03 14:47.</p>
- *
- * @author <a href="mailto:baixiaolin@qianmi.com">OF2510-白晓林</a>
- * @version 0.1.0
+ * @author Administrator
  */
 @Getter
 @Setter
