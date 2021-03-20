@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+
+    <logger name="com.alibaba.dubbo" level="ERROR"/>
+    <logger name="org.apache.dubbo" level="ERROR"/>
+    <logger name="org.apache.activemq" level="ERROR"/>
+    <logger name="com.qianmi.security" level="ERROR"/>
+    <logger name="com.ofpay.rex.security" level="ERROR"/>
+    <logger name="com.qianmi.admin.webjar.support.SSOAuthStrategy" level="ERROR"/>
+    <logger name="com.qianmi.session.client" level="ERROR"/>
+    <logger name="com.qianmi.gcs.wx.purchase.infrastructure.support.utils.log.CostTracking" level="DEBUG" />
+</configuration>

@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
  * @author Administrator
  */
 @Slf4j
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 @EnableScheduling
 @RestController
 @SpringBootApplication
