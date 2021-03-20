@@ -48,6 +48,7 @@ public class AggEventBus {
         final SecurityManager s = System.getSecurityManager();
         final ThreadGroup group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
         int processors = Runtime.getRuntime().availableProcessors();
+        // https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html
         return new ThreadPoolExecutor(
                 processors * 5,
                 processors * 10,
