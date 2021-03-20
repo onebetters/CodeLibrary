@@ -49,14 +49,21 @@ public class AggEventBus {
         final ThreadGroup group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
         int processors = Runtime.getRuntime().availableProcessors();
         // https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html
-        return new ThreadPoolExecutor(
-                processors * 5,
-                processors * 10,
-                180L,
-                TimeUnit.SECONDS,
-                new SynchronousQueue<>(),
-                r -> new Thread(group, r, "MetadataEvents-" + threadNumber.getAndIncrement(), 0),
-                new ThreadPoolExecutor.CallerRunsPolicy());
+        // https://mp.weixin.qq.com/s/YbyC3qQfUm4B_QQ03GFiNw
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(processors * 5,
+                                                             processors * 10,
+                                                             180L,
+                                                             TimeUnit.SECONDS,
+                                                             new SynchronousQueue<>(),
+                                                             r -> new Thread(group, r, "MetadataEvents-" + threadNumber.getAndIncrement(), 0),
+                                                             new ThreadPoolExecutor.CallerRunsPolicy());
+        //线程池预热
+        //executor.prestartAllCoreThreads();
+        //executor.prestartCoreThread();
+
+        //允许核心线程回收
+        executor.allowCoreThreadTimeOut(true);
+        return executor;
     }
 
     public <T extends Event> void send(final T source) {
