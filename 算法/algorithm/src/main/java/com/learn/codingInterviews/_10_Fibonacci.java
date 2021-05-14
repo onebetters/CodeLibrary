@@ -10,7 +10,8 @@ package com.learn.codingInterviews;
 public class _10_Fibonacci {
     public static void main(String[] args) {
 
-//        System.out.println(method1(50);
+        System.out.println(method1(10));
+        System.out.println(method1(10));
         System.out.println(method1(40) == method2(40));
     }
 
@@ -47,16 +48,16 @@ public class _10_Fibonacci {
         if (n < 2) {
             return nums[n];
         }
-        // 前面的数 n-2
-        long one = 1;
-        // 第二个数 n-1
-        long two = 0;
+        // 前2的数 n-2
+        long per_two = 0;
+        // 前1的数 n-1
+        long per_one = 1;
         // 当前数
         long fibN = 0;
         for (int i = 2; i <= n; i++) {
-            fibN = one + two;
-            two = one;
-            one = fibN;
+            fibN = per_two + per_one;
+            per_two = per_one;
+            per_one = fibN;
         }
         return fibN;
     }

@@ -15,6 +15,7 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreExample1 {
     // 请求的数量
     private static final int threadCount = 550;
+    private ThreadLocal<Integer> threadLocal = new InheritableThreadLocal<>();
 
     public static void main(String[] args) throws InterruptedException {
         // 创建一个具有固定线程数量的线程池对象（如果这里线程池的线程数量给太少的话你会发现执行的很慢）

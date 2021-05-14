@@ -56,8 +56,8 @@ public class _7_ReConstructBinaryTree {
             // 找到中序遍历的根节点
             if(pre[0] == in[i]){
 
-                root.left = method(Arrays.copyOfRange(pre,i,i+1),Arrays.copyOfRange(in,0,i));
-                root.right = method(Arrays.copyOfRange(pre,i+1,pre.length),Arrays.copyOfRange(in,i+1,in.length));
+                root.left = method(Arrays.copyOfRange(pre,1,i+1), Arrays.copyOfRange(in,0, i));
+                root.right = method(Arrays.copyOfRange(pre,i+1, pre.length), Arrays.copyOfRange(in,i+1, in.length));
 
 //                root.left = reConstructBinaryTree(
 //                        Arrays.copyOfRange(pre,1,i+1),Arrays.copyOfRange(in,0,i));
