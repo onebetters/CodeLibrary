@@ -6,11 +6,7 @@ import java.util.concurrent.Executors;
 
 /**
  * 定义了请求的数量为550，当这550个请求被处理完成之后，才会执行System.out.println("finish")
- * <p>Filename: lock.A.java</p>
- * <p>Date: 2021-03-20 19:39.</p>
- *
- * @author <a href="mailto:zhangzhichuan@qianmi.com">OF3430-张志川</a>
- * @version 0.1.0
+ * @author Administrator
  */
 public class CountDownLatchExample1 {
     // 请求的数量

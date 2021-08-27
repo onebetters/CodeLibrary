@@ -5,12 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
- * TODO
- * <p>Filename: com.example.A.java</p>
- * <p>Date: 2021-03-20 19:27.</p>
- *
- * @author <a href="mailto:zhangzhichuan@qianmi.com">OF3430-张志川</a>
- * @version 0.1.0
+ * @author Administrator
  */
 public class SemaphoreExample1 {
     // 请求的数量
