@@ -2,5 +2,5 @@
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="com.example" level="ERROR"/>
+    <logger name="com.zzc" level="ERROR"/>
 </configuration>

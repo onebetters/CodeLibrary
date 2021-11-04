@@ -20,8 +20,5 @@ public class Test {
                                        .imNo("110Im")
                                        .mobileNo("15895933503")
                                        .build());
-
-
-
     }
 }
