@@ -29,7 +29,7 @@ public class MarketTradeExcelExportDTO implements Serializable {
     @ExcelIgnore
     private String                        buyerStoreId;
     @ExcelProperty("订单编号")
-    @ExcelFieldMerge
+    @ExcelFieldMerge(alignLeft = true)
     private String                        tradeId;
     @ExcelProperty("订单总额")
     @ExcelFieldMerge

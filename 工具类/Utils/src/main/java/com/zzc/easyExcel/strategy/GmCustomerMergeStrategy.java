@@ -5,12 +5,12 @@ import com.alibaba.excel.write.merge.AbstractMergeStrategy;
 import com.zzc.easyExcel.AnnotationType;
 import com.zzc.easyExcel.CustomUtils;
 import com.zzc.easyExcel.example.CustomerInfoExportDTO;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,19 +27,13 @@ public class GmCustomerMergeStrategy extends AbstractMergeStrategy {
      */
     private Map<Integer, Field> columnMergeMap;
     /**
-     * Map<行index，往下merge（合并）的行数>
+     * Map<尾行index，往上merge（合并）的行数>
      */
     private final Map<Integer, Long> mergeInfoMap = new HashMap<>();
 
-    /**
-     * 需要清除内容的行index
-     */
-    private final List<Integer> blankRowList = new ArrayList<>();
-
     public GmCustomerMergeStrategy(@Nonnull final List<?> data, @Nonnull final Class<?> clazz) {
-        List<CustomerInfoExportDTO> list       = (List<CustomerInfoExportDTO>) data;
-        int                         totalRowNo = list.size() + 1;
-        if (list.size() == 0) {
+        List<CustomerInfoExportDTO> list = (List<CustomerInfoExportDTO>) data;
+        if (list.isEmpty()) {
             return;
         }
         columnMergeMap = CustomUtils.getNeedColumnIndex(clazz, AnnotationType.MERGER);
@@ -47,28 +41,21 @@ public class GmCustomerMergeStrategy extends AbstractMergeStrategy {
             return;
         }
         Map<String, Long> customerMap = list.stream().collect(Collectors.groupingBy(CustomerInfoExportDTO::getUserId, Collectors.counting()));
-        String lastUserId = "";
-        for (int i = 0; i < list.size(); i++) {
-            String userId = list.get(i).getUserId();
-            if (userId.equals(lastUserId)) {
-                lastUserId = userId;
-                continue;
-            }
-            Long userIdCount = customerMap.get(userId);
-            if (userIdCount > 1) {
-                mergeInfoMap.put(totalRowNo - list.size() + i, userIdCount - 1);
-                //修复EasyExcel合并单元格后求和重复计算Bug，记录要清除内容的行index
-                for (int j = 1; j <= userIdCount - 1; j++) {
-                    blankRowList.add(totalRowNo - list.size() + i + j);
+        for (int rowIndex = 0; rowIndex < list.size(); rowIndex++) {
+            String userId = list.get(rowIndex).getUserId();
+            if (StringUtils.isNotBlank(userId)) {
+                Long userIdCount = customerMap.get(userId);
+                if (userIdCount > 1) {
+                    mergeInfoMap.put(rowIndex + userIdCount.intValue(), userIdCount - 1);
+                    rowIndex += userIdCount - 1;
                 }
             }
-            lastUserId = userId;
         }
     }
 
     @Override
     protected void merge(Sheet sheet, Cell cell, Head head, Integer relativeRowIndex) {
-        CustomUtils.merge(sheet, cell, columnMergeMap, mergeInfoMap, blankRowList);
+        CustomUtils.merge(sheet, cell, columnMergeMap, mergeInfoMap);
     }
 
 }

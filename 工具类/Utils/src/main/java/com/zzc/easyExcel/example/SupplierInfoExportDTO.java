@@ -1,6 +1,7 @@
 package com.zzc.easyExcel.example;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.zzc.easyExcel.annotation.ExcelFieldMerge;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.Date;
  * @author Administrator
  */
 @Data
+@ExcelIgnoreUnannotated
 public class SupplierInfoExportDTO implements Serializable {
 
     private static final long serialVersionUID = -628931439892830891L;

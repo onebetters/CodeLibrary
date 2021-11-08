@@ -3,6 +3,7 @@ package com.zzc.easyExcel.example;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.zzc.dateutil.DateTimeUtils;
+import com.zzc.easyExcel.handler.CellMergeWriterHandler;
 import com.zzc.limitApi.LimitApi;
 import com.zzc.easyExcel.ResponseBuilder;
 import lombok.Cleanup;
@@ -37,6 +38,7 @@ public class Main {
         //                                   .head(MarketTradeExcelDTO.class)
         //                                   .registerWriteHandler(new LongestMatchColumnWidthStyleStrategy())
         //                                   //.registerWriteHandler(new MarketTradeMergeStrategy(trades, MarketTradeExcelExportDTO.class))
+        //                                   .registerWriteHandler(new CellMergeWriterHandler(MarketTradeExcelExportDTO.class))
         //                                   .build();
         // WriteSheet tradesMarketingSheet = EasyExcel.writerSheet(3, "订单营销信息")
         //                                            .head(MarketTradeMarketingExcelDTO.class)
