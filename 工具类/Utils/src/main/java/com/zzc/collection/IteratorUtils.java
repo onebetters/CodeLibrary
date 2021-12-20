@@ -14,10 +14,12 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toCollection;
+
 /**
  * 增加一些Java8中不支持的集合操作方法
- * Created by liuzhaoming on 15/12/2.
- * modified by jinwei
+ * @author Administrator
  */
 public class IteratorUtils {
 
@@ -231,6 +233,17 @@ public class IteratorUtils {
     public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
         Map<Object, String> seen = new ConcurrentHashMap<>();
         return t -> seen.put(keyExtractor.apply(t), "") == null;
+    }
+
+    /**
+     * 由于JAVA8 stream.distinct的局限, 提供处理业务对象集合的distinct
+     *
+     * @param key   e.g. Person::getName
+     * @param <T>   泛型
+     * @return List<T>
+     */
+    public static <T> List<T> distinctByProperty(@Nullable final Collection<T> collection, @Nonnull final Function<? super T, String> key) {
+        return CollectionUtils.emptyIfNull(collection).stream().collect(collectingAndThen(toCollection(() -> new TreeSet<>(Comparator.comparing(key))), ArrayList::new));
     }
 
     /**
